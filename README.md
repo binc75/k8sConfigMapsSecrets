@@ -1,4 +1,4 @@
-## Project 1
+## k8s ConfigMaps and Secrets
 Scope of the exercise is to create a simple Python Flask app, create a container with the app inside, and then create a K8S deployment for the container using configmaps and secret for the app.
 
 

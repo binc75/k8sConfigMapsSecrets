@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: lmy-flask-wsgi-service
+spec:
+  selector:
+    app: my-flask-wsgi
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: NodePort
+

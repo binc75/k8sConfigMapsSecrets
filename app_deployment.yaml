@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-flask-wsgi-deployment
+  labels:
+    app: my-flask-wsgi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-flask-wsgi
+  template:
+    metadata:
+      labels:
+        app: my-flask-wsgi
+    spec:
+      containers:
+      - name: my-flask-wsgi
+        image: nbianchi/my_flask_wsgi
+        imagePullPolicy: Always
+        env:
+        - name: mysql_password
+          valueFrom: 
+            secretKeyRef:
+              name: generic-secret
+              key: mysql_password
+        - name: mysql_username
+          valueFrom:
+            configMapKeyRef:
+              name: generic-configmap
+              key: mysql_username
+        - name: mysql_host
+          valueFrom:
+            configMapKeyRef:
+              name: generic-configmap
+              key: mysql_host
+        - name: env_var1
+          valueFrom:
+            configMapKeyRef:
+              name: generic-configmap
+              key: env_var1
+        - name: env_var2
+          valueFrom:
+            configMapKeyRef:
+              name: generic-configmap
+              key: env_var2
+              #        ports:
+              #        - containerPort: 80

@@ -1,0 +1,5 @@
+env_var1="Variable 1 from env"
+env_var2="Variable 2 from env"
+mysql_username="root"
+mysql_password="abc123"
+mysql_host="db.example.com"
